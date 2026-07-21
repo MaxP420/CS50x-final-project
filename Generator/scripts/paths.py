@@ -20,7 +20,8 @@ BLUE_CONE_PATH = CONES_DIR / "smallBlueCone.blend"
 YELLOW_CONE_PATH = CONES_DIR / "smallFullYellowCone.blend"
 ORANGE_CONE_PATH = CONES_DIR / "smallRedCone.blend"
 
-#Damaged Cones 
+#Output
+OUTPUT_DIR = GENERATOR_DIR 
 
 
 #Knocked Over Cones

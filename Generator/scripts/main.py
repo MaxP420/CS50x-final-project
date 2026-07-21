@@ -1,5 +1,4 @@
 import blenderproc as bproc
-import os
 import bpy
 import numpy as np
 import random
@@ -46,6 +45,9 @@ def Innit_Base_Scene(Tribuene_path, Zaun_path, Baeume_path):
     
 
 def get_configs():
+    script_dir = Path(__file__).parent
+    generator_dir = script_dir.parent
+
     Config = {
         # Choose a range of number of cones to include in the scene and whether to include damaged or knocked over cones
         "Include_blue": True, 
@@ -89,13 +91,13 @@ def get_configs():
 
         #Number of images to generate. Choose how many Numbers of scenes to generate and how many pictures per scene to generate. If YOLO_Annotation is set to True, the script will also generate YOLO annotations for each image
         "Number_of_scenes": 1,
-        "Number_of_Camera_Poses": 2,
+        "Number_of_Camera_Poses": 1,
         "YOLO_Annotation": True,
 
         #Set Camera Resolution x,y and an output directory 
         "CameraResX": 640,
         "CameraResY": 640,
-        "Output_path": "D:\\Strohmo\\Synthetic Data\\Strohmo-Synthetic-Data\\Generator\\output"
+        "Output_path": str(generator_dir / "output")
     }
     return Config
 
@@ -286,7 +288,7 @@ def setup_camera_render(config):
 
     bproc.renderer.enable_segmentation_output(map_by=["category_id", "instance", "name"])
     data = bproc.renderer.render()
-    bproc.writer.write_hdf5("output/", data)
+    #bproc.writer.write_hdf5("output/", data)
 
 
     if config["Distortion"]:
@@ -298,13 +300,12 @@ def setup_camera_render(config):
             data[key] = bproc.postprocessing.apply_lens_distortion(data[key], mapping_coords, orig_res_x, orig_res_y, use_interpolation=use_interpolation)
 
 
-    # Ergebnis speichern
-    bproc.writer.write_hdf5("output/", data)
 
-    output_dir = "output"
+    output_dir = Path(config["Output_path"])
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Create bounding boxes for each cone with its respective lable 
-    bproc.writer.write_coco_annotations(os.path.join(output_dir, "coco_data"),    # subdic coco_data
+    bproc.writer.write_coco_annotations(str(output_dir),    # subdic coco_data
         instance_segmaps=data["instance_segmaps"],
         instance_attribute_maps=data["instance_attribute_maps"],
         colors=data["colors"],
