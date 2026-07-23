@@ -72,26 +72,20 @@ The `blenderproc` command can now be used from anywhere on your system.
 ## Usage
 
 1. Make sure the `assets` folder is placed correctly in the Generator folder.
-2. Open the `Generator` folder.
-3. Run the main.py generation script with ```blenderproc run scripts/main.py ```
-4. Adjust configuration settings such as scene parameters in main.py ´s ```get_config function```, and dataset size if needed.
-
-If your entry file has a different name, replace `main.py` with the correct script.
+2. Adjust configuration settings such as scene parameters and number of images per scene in main.py ´s ```get_config function```
+3. Set the number of runs in automation.py. Dataset size = runs * images_per_scene
+4. Run the automation.py generation script with ```blenderproc run automation.py ```
 
 ## Configuration
 
-Set configurations in the `get_configs` function in main.py 
+Set configurations in the `get_configs` function in main.py and number of runs in `automation.py`
 
-- Lighting Conditions (Daytime, Nightime, Rain) 
+- Lighting Conditions (Daytime, Sunrise, Sunset, Nightime, Rain) 
 - Motion Blur / Camera Distortion
-- Which Objects to include and their amounts
+- Which Objects to include and their appearance percentage
 - Placement bounds for objects and camera on the surface 
-- Number of camera poses per scene (pictures per scene) and amount of scenes to render
+- Number of pictures per scene
 - Camera resolution 
-
-## Notes
-
-- The assets folder is downloaded via LFS Git
 
 ## Troubleshooting
 
