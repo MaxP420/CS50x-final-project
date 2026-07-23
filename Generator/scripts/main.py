@@ -58,8 +58,8 @@ def get_configs():
         "appearance_yellow": 33, 
 
 
-        "MinNumber_of_cones": 1,
-        "MaxNumber_of_cones": 3,
+        "MinNumber_of_cones": 10,
+        "MaxNumber_of_cones": 15,
         "Include_Knocked_Over_Cones": True,
         "appearance_percentage_of_knocked_over_cones": 50, #in percent 
 
@@ -90,7 +90,6 @@ def get_configs():
         "Distortion": False,
 
         #Number of images to generate. Choose how many Numbers of scenes to generate and how many pictures per scene to generate. If YOLO_Annotation is set to True, the script will also generate YOLO annotations for each image
-        "Number_of_scenes": 1,
         "Number_of_Camera_Poses": 1,
         "YOLO_Annotation": True,
 

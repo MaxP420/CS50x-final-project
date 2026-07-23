@@ -21,7 +21,17 @@ YELLOW_CONE_PATH = CONES_DIR / "smallFullYellowCone.blend"
 ORANGE_CONE_PATH = CONES_DIR / "smallRedCone.blend"
 
 #Output
-OUTPUT_DIR = GENERATOR_DIR 
+OUTPUT_DIR = GENERATOR_DIR / "output"
+COCO_PATH = OUTPUT_DIR / "coco_annotations.json"
+YOLO_LABELS_DIR = OUTPUT_DIR / "yolo_labels"
+
+#Scripts
+BLENDER_SKRIPT = SCRIPTS_DIR / "main.py"
+#BLENDER_SKRIPT = BLENDER_SCRIPT
+CONVERTER_SCRIPT = SCRIPTS_DIR / "CocoToYolo.py"
+# script_dir = Path(__file__).parent
+# generator_dir = script_dir.parent
+# output_dir = generator_dir / "output"
 
 
 #Knocked Over Cones
