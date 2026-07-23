@@ -71,7 +71,7 @@ The `blenderproc` command can now be used from anywhere on your system.
 
 ## Usage
 
-1. Make sure the `assets` folder is placed correctly in the project root.
+1. Make sure the `assets` folder is placed correctly in the Generator folder.
 2. Open the `Generator` folder.
 3. Run the main.py generation script with ```blenderproc run scripts/main.py ```
 4. Adjust configuration settings such as scene parameters in main.py ´s ```get_config function```, and dataset size if needed.
@@ -80,20 +80,18 @@ If your entry file has a different name, replace `main.py` with the correct scri
 
 ## Configuration
 
-Depending on your setup, you may need to configure:
+Set configurations in the `get_configs` function in main.py 
 
-- The path to Blender or BlenderProc.
-- Input and output directories.
-- Scene parameters.
-- The number of generated samples.
-- Asset paths inside the project.
+- Lighting Conditions (Daytime, Nightime, Rain) 
+- Motion Blur / Camera Distortion
+- Which Objects to include and their amounts
+- Placement bounds for objects and camera on the surface 
+- Number of camera poses per scene (pictures per scene) and amount of scenes to render
+- Camera resolution 
 
 ## Notes
 
-- The assets folder is not stored directly in the repository because of its size.
-- Make sure the folder is named exactly `assets`.
-- If BlenderProc or Blender is not found, check your installation and system path.
-- Depending on your system, you may need to adjust file paths in the configuration.
+- The assets folder is downloaded via LFS Git
 
 ## Troubleshooting
 
@@ -109,16 +107,17 @@ pip install -e .
 
 Verify that the `assets` folder is located in the project root and contains the required subfolders.
 
-### Permission errors
 
-Run the terminal or shell with the required permissions, or install packages in a virtual environment.
+## Citation
 
-## License
-
-<!-- Add your license here -->
-Specify the license for your project here.
-
-## Contact
-
-<!-- Add your contact information here -->
-For questions or contributions, contact the project maintainer.
+@article{Denninger2023, 
+- doi = {10.21105/joss.04901},
+- url = {https://doi.org/10.21105/joss.04901},
+- year = {2023},
+- publisher = {The Open Journal}, 
+- volume = {8},
+- number = {82},
+- pages = {4901}, 
+- author = {Maximilian Denninger and Dominik Winkelbauer and Martin Sundermeyer and Wout Boerdijk and Markus Knauer and      Klaus H. Strobl and Matthias Humt and Rudolph Triebel},
+- title = {BlenderProc2: A Procedural Pipeline for Photorealistic Rendering}, 
+- journal = {Journal of Open Source Software}
